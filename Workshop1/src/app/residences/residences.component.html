@@ -1,0 +1,22 @@
+<input
+  type="text"
+  [(ngModel)]="searchText"
+  placeholder="Search by address..."
+/>
+<div class="card-container">
+<div *ngFor="let res of filteredResidences" class="card">
+    <h2>{{ res.name }}</h2>
+    <img [src]="res.image" alt="{{ res.name }}" width="200">
+    <br />
+    <button (click)="showLocation(res.address)">Show Location</button>
+    <button (click)="likeResidence(res)">❤️ Like</button>
+
+    <div>
+        <p *ngIf="res.status === 'Disponible'">🟢 <strong>Disponible</strong></p>
+        <p *ngIf="res.status === 'En Construction'">🟡 <strong>En construction</strong></p>
+        <p *ngIf="res.status === 'Vendu'">🔴 <strong>Vendu</strong></p>
+      </div>
+      
+  </div>
+</div>
+  
